@@ -11,6 +11,8 @@ class PageDetailFilms extends StatefulWidget {
 }
 
 class _PageDetailFilmsState extends State<PageDetailFilms> {
+  FilmDetail? filmDetail;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +33,8 @@ class _PageDetailFilmsState extends State<PageDetailFilms> {
         }
         if (snapshot.hasData) {
           // Jika data ada dan berhasil maka akan ditampilkan hasil datanya
-          FilmDetail filmModel = FilmDetail.fromJson(snapshot.data);
-          return _buildItemUsers(filmModel);
+          FilmDetail filmDetail = FilmDetail.fromJson(snapshot.data);
+          return _buildItemUsers(filmDetail);
         }
         return _buildLoadingSection();
       },
@@ -58,13 +60,13 @@ class _PageDetailFilmsState extends State<PageDetailFilms> {
   //   );
   // }
 
-  Widget _buildItemUsers(FilmDetail filmModel) {
+  Widget _buildItemUsers(FilmDetail filmDetail) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
           width: 100,
-          child: Image.network(filmModel.poster!),
+          child: Image.network('${filmDetail.poster}'),
         ),
         const SizedBox(
           width: 20,
@@ -72,12 +74,12 @@ class _PageDetailFilmsState extends State<PageDetailFilms> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(filmModel.title!),
-            Text(filmModel.released!),
-            Text(filmModel.genre!),
-            Text(filmModel.director!),
-            Text(filmModel.actors!),
-            Text(filmModel.plot!)
+            Text('${filmDetail.title}'),
+            Text('${filmDetail.released}'),
+            Text('${filmDetail.genre}'),
+            Text('${filmDetail.director}'),
+            Text('${filmDetail.actors}'),
+            Text('${filmDetail.plot}')
           ],
         ),
       ],

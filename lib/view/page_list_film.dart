@@ -66,11 +66,10 @@ class _PageListFilmsState extends State<PageListFilms> {
   Widget _buildItemUsers(Search film) {
     return InkWell(
       onTap: () => {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return const PageDetailFilms(imdbid: '');
-          },
-        ))
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PageDetailFilms(imdbid: film.imdbID!)))
       },
       child: Card(
         child: Row(
