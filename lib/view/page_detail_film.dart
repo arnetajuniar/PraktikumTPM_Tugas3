@@ -51,36 +51,77 @@ class _PageDetailFilmsState extends State<PageDetailFilms> {
     );
   }
 
-  // Widget _buildSuccessSection(FilmDetail filmModel) {
-  //   return ListView.builder(
-  //     itemCount: filmModel.ratings!.length,
-  //     itemBuilder: (BuildContext context, int index) {
-  //       return _buildItemUsers(filmModel.ratings![index]);
-  //     },
-  //   );
-  // }
-
   Widget _buildItemUsers(FilmDetail filmDetail) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 100,
-          child: Image.network('${filmDetail.poster}'),
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('${filmDetail.title}'),
-            Text('${filmDetail.released}'),
-            Text('${filmDetail.genre}'),
-            Text('${filmDetail.director}'),
-            Text('${filmDetail.actors}'),
-            Text('${filmDetail.plot}')
-          ],
+    return ListView(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(15),
+          width: 320,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.blue,
+              width: 1,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+          child: Center(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(5),
+                alignment: Alignment.center,
+                child: Image.network(
+                  '${filmDetail.poster}',
+                  width: 150,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.center,
+                child: Text(
+                  '${filmDetail.title}',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  "Date Released:\n ${filmDetail.released}",
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  "Genre:\n ${filmDetail.genre}",
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  "Director:\n ${filmDetail.director}",
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  "Actor:\n ${filmDetail.actors}",
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  "Plot:\n ${filmDetail.plot}",
+                ),
+              ),
+            ],
+          )),
         ),
       ],
     );
